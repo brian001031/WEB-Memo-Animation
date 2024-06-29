@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>		
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+		
+	<style type="text/css"> 
+
+		.setNine{
+			color:iron blue;
+			width:52px; 		
+			font-size:50px;		
+		}
+
+		div{  	
+			border:3px red solid; 
+			width:45px; 
+			font-size:16px; 
+		} 		
+		.max{ 		
+			border:5px blueviolet;	
+			width:50px; 
+			font-size:5px; 
+		} 
+		.min{
+			border:3px orangered;	
+			width:15px; 		
+			font-size:1px; 
+		} 
+		
+		
+	</style>
+	
+	<script type="text/javascript" src="afterglow.min.js"></script>
+	</head>
+	
+		
+	<script type="text/javascript" src="/eel.js"></script>
+
+	<!<body bgcolor="#cc77ABFc">	
+	 <style>
+		body{
+			margin:50px;
+			padding:25px;			
+			background:#c00147 url(https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810272230) center center fixed no-repeat;　//設定背景圖片的呈現方式
+			background-size:cover;	
+
+			//https://www.hahatai.com/sites/default/files/kof04.jpg
+
+		}	 	
+	 </style>
+	 	 
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
+	<script>	
+	  //首先宣告初始的字體大小比例是75%
+      var size = 75;	
+	  var btrue = new Boolean(true);
+	  
+	  function ShowAnswer(){
+		  document.getElementById("multi_Ans").innerHTML='81';		  
+
+		/*		  
+		   var divNode = document.getElementsByTagName("div")[0]; 
+						
+						
+		   btrue = !btrue;
+			
+			if(btrue){
+				divNode.style.fontSize = '3px' ; 	 
+				divNode.className="max"; 		
+			}else{		
+				divNode.style.fontSize ='25px'  ; 	 
+				divNode.className="min"; 		
+			}		
+		*/
+	 }	 
+
+     eel.expose(js_what_year);
+	 function js_what_year() {
+		return "The year is " + new Date().getFullYear();	 
+	 }
+	 
+	 eel.expose(Update_DateTime);
+	 function Update_DateTime(){
+		
+		var now = new Date(), // current date 
+		time = now.getFullYear()+':'+now.getMonth()+':'+now.getDate()+':'+now.getHours() + ':' + now.getMinutes()+ ':' + now.getSeconds(); 
+				
+		return "DateTime all -> " + time;
+				
+		//setTimeout(Update_DateTime, 1000);
+		//setInterval(Update_DateTime, 1000);		
+	 }
+	 // run every 5secs
+	setInterval(Update_DateTime, 3000);
+	
+	
+	function Mouse_Out(element){
+		element.style.color = "lawngreen";				
+	}
+	
+	function Mouse_Over(element){
+		element.style.color = "aqua";			
+	}
+		
+	function SizeToLarge(){
+	
+		//超過300就判定最大(目前MAX為 300%)		
+		if(size>300){
+		   $("div").css("font-style","oblique");		  
+		   $("div").css("color","blue");
+		   alert("Too largest !!");				   		  		   
+		}else{		
+			size = size+25;
+			//使用javascript中的CSS函數控制body內的字體大小
+			//P.S. body也可以換成 id name 或 class name 
+			//例如：$("#idfont") 或是 $(".idfont")				
+			$("div").css("border",size/3+"px gold solid");
+			$("div").css("font-size",size+"%");
+			$("div").css("font-style","normal");
+			$("div").css("color","black");			
+		}		
+	}
+	
+	function SizeTosmall(){
+	
+			//判斷目前size大小			
+            if(size>50){
+                //如果不是最大則每次減少25%
+                size = size-25;
+                //使用javascript中的CSS函數控制字體大小
+                //P.S. body也可以換成 id name 或 class name 
+                //例如：$("#idfont") 或是 $(".idfont")
+				$("div").css("border",size/3+"px gold solid");
+                $("div").css("font-size",size+"%");
+				$("div").css("font-style","normal");
+				$("div").css("color","black");
+            }else{
+                //如果已經到最小就提示已經最小(此例最小為50%)
+				 $("div").css("font-style","italic");		  
+				 $("div").css("color","Red");
+                alert("already smallest !!");
+            }
+	}
+	
+	</script>
+	
+	</head>
+	<body> 9*9 = <span id="multi_Ans" class="setNine">(-----)</span>
+		<input type="button" value="顯示答案" onclick="ShowAnswer() "><p> 
+		<input type="button" value="字放大" onclick="SizeToLarge()">
+		<input type="button" value="字縮小" onclick="SizeTosmall()">
+		<div>
+		Test1 One <br/> 
+		Test2 Two <br/> 
+		Test3 Three <br/>
+		</div> 
+					
+		<p> --------below---------- </p> 		
+		<span onmouseover = "Mouse_Over(this)"; onmouseout="Mouse_Out(this)";>DragHere 注意!</span><p> 
+							
+		<p> --------below---------- </p><p> 		
+		<table border="15px" style="border-top:3px #FFD382 solid;border-bottom:3px #82FFFF solid;" cellpadding="7">
+			<tr><td>Titl1</td><td>Titl12</td></tr>			
+			<tr>
+				<td>~IORI YAGAMI HERE~</td>
+				<td><span style="font-size:10px"><font color="blue">這是 10px 的文字大小</font></span></td>
+				<td><span style="font-family:DFKai-sb"><font color="green">這是標楷體字型</font></span></td>
+			</tr>			
+		</table>
+			
+		<video class="afterglow" id="myvideo" width="640" height="480">
+			<source type="video/mp4" src="videos/conan_step_2.mp4" align="center" height="480"/>
+		</video>
+	</body>
+</html>

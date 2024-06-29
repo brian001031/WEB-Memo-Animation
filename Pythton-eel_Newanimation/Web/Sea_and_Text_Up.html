@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>~太空戰士FF8-最終幻想~</title>
+		<style>				
+			.moon{
+				position: absolute;
+  				left: 15px;
+  				top: 15x;
+				height:20px;
+				width:20px;
+				z-index:3;
+			}
+			.bottom{
+				position:absolute;
+				top:310px;
+				z-index:50;
+			}
+			img{
+ 				position:absolute; 
+ 				filter:alpha(opacity=100);/* IE */
+ 				-moz-opacity:1;/* Moz + FF */
+ 				opacity: 1;/* 支援CSS3的瀏覽器（FF 1.5也支援）*/
+			}
+			#poem{
+				position: /*relative*/ absolute;
+				top:100px;
+				left:200px;
+				z-index:2;
+				font-size:15px blueviolet;
+				font-weight:bold;				 
+			}
+			#DIV_TEXT{
+				width:335px;
+				height:225px;
+				background-color:#78FF78;
+				position:relative;
+				top:205px;
+				left:25px;
+				right:150px;
+				bottom:150px;
+				font-size:20px;
+				white-space:nowrap;
+			}
+			
+			#BackgroundArea{				 
+				<!--background-color:#00FED;-->
+				background-size: cover;
+				z-index: 1;
+				position:absolute;
+				top:100px;
+				left:900px;							
+			}				
+			.gradation{
+				top:10px;
+				left:20px;
+				width:500px;
+				height:250px;
+				<!-- background: linear-gradient(250deg, rgba(110,184,255,58), rgba(255,246,108,.12), rgba(255,163,108,.15)); -->
+				background: linear-gradient(270deg, rgba(220,110,100,100), rgba(255,246,108,.25), rgba(255,163,108,.50));
+				background-size: 900% 900%;
+				animation: AnimationName 30s ease infinite;
+				position: absolute;
+				z-index: 1;				
+			}
+			.gradationtext{
+				top:10px;
+				left:20px;				 
+				background: linear-gradient(45deg, rgba(108,184,255,08), rgba(255,246,108,.8), rgba(255,163,108,.8)); 
+				background-size: 300% 300%;
+				animation: AnimationName 10s ease infinite;
+				position: absolute;
+				z-index: 2;				
+			}
+			
+			@keyframes AnimationName {
+				0%{background-position:0% 90%}
+				50%{background-position:60% 20%}
+				100%{background-position:0% 75%}
+			}
+		</style>					
+	
+	<body id = "Map">				
+		<div  style="background:url('images/FF8_background.jpg');width:1000px;height:505px;no-repeat" class="gradation">								
+			<div class="moon" id="moon">
+				<img src="images/moon.png"  style="100px;width:100px;" onclick="move()"/>
+			</div>
+			<div id="poem"> </div>
+			<div id="DIV_TEXT" class="gradationtext"></div> 	
+		 		
+			<div id="BackgroundArea" ></div> 				
+			<input type="button" id="BackgroundArea" value="背景切換" onclick="ChangeBackground()">
+				
+			<!--
+			<select name="select" id="BackgroundArea" onclick="ChangeBackground(this)"> 
+			  <option value="images/dog_with_girl.jpg">0</option> 
+			  <option value="images/FF8_background.jpg">1</option> 
+			  <option value="images/perfectwith.jpg">2</option>
+			  <option value="images/Lady2.jpg">3</option>
+			  <option value="images/lady3.jpg">4</option>
+			  <option value="images/hansonSir.jpg">5</option>
+			  <option value="images/main.jpg">6</option>			
+			</select> 
+			-->			
+		</div> 
+	</body>	
+	
+	<audio id="bgMusic">
+				<source = src="MoonLight.mp3" type="audio/mp3">
+				<source = src="hangge.ogg" type="audio/ogg">
+	</audio>
+	
+	<embed id="Music1" autostart="true" loop="true" volume="100" src="audio/MoonLight.mp3" />
+	
+	<a href="javascript:document.midi.play()" target=_self>撥放音樂</a>
+	<a href="javascript:document.midi.stop()" target=_self>停止音樂</a>
+	
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
+	<script language="JavaScript" type="text/javascript">
+ 		//獲取圖片所在的div物件
+ 		var img=document.getElementById("moon");
+ 		//設定div起始座標
+ 		var x=850,y=585;
+ 		//設定圖片的行進速度
+ 		var xSpeed=0,ySpeed=-1;
+ 		//設定圖片的最大浮動的高度
+ 		var h=100;
+		var H=0;
+		var torlence = y - h;
+		var str1 = torlence / 3;
+		var str2 = torlence / 5;
+		var str3 = torlence / 7;
+		
+		var count = 0 , time = 0;
+		
+				
+		//新增音樂mp3 播放
+		/*
+		if (audio.canPlayType("audio/mp3")) {
+			audio.src = "MoonLight.mp3";
+		}else if(audio.canPlayType("audio/ogg")) {
+			audio.src = "hangge.ogg";
+		}*/
+		
+		mp3 = new Array(1);
+		mp3[0] = "audio/MoonLight.mp3";
+		 									
+		//新增顯示字串
+		midi = new Array(3);
+		//midi[0] = "張無忌-您好 有空 可以 一起 研究 歡迎 來到心靈 小語面板 金庸-曾把-所創作-的小說名稱的首字聯成一副對聯：飛雪連天射白鹿，笑書神俠倚碧鴛。";					
+		midi[0] = "*留在我身邊Rinoa ......我從來沒有通過我可以這麼說,但我愛你...我會永遠愛你。 我希望我們在一起永遠〜天使~";				 
+		midi[1] = "歡迎來到心靈小語面板";
+		midi[2] = "有空可以一起研究喔";
+
+		var lenmid1_0= midi[0].length;
+		var text = "";
+		
+		var bodyBgs = [];
+			bodyBgs[0] = "images/2779-02.jpg";
+			bodyBgs[1] = "images/2779-04.jpg";
+			bodyBgs[2] = "images/perfectwith.jpg";
+			bodyBgs[3] = "images/2779-06.jpg";
+			bodyBgs[4] = "images/all.jpg";
+			bodyBgs[5] = "images/123.jpg";
+			bodyBgs[6] = "images/main.jpg";
+		
+		//var audio = document.getElementById("bgMusic");
+		//var audio = document.createElement("audio");
+		//audio.src = "MoonLight.mp3";
+		//audio.play();
+		 
+		//重新播放
+		//audio.currentTime = 0;
+		//audio.play();
+		
+					
+ 		function floatimg(){
+  		//比較圖片是否到達指定高度 
+  		if(y<h||y<0){ ySpeed= 0;H=1; }
+  		if(H==1){
+            //獲取文字框所在的div物件
+			var tt = document.getElementById("poem");
+                        //改變文字框中內容
+			tt.innerHTML="~TKS FOR YOUR REVIEW,See You~.";
+		}
+		else{		
+			if(y == h+str1){
+				
+			}
+			else if (y >= h+str2&&  y< h+str1){
+						
+			}
+			else{					
+				var NewArray = midi[0].split("");			
+				if(count < lenmid1_0){	
+					text="";
+					for (i = 0; i < count ; i++) {
+					// text += NewArray[i]+ "<br>";					
+						if(i%10 || (i%10)==1){
+							text += NewArray[i]/*+"-"*/;
+						}
+						else{
+							//text += NewArray[i]+"-";
+							text += NewArray[i]+ "<br>";
+						}					 					 		
+					}
+					document.getElementById("DIV_TEXT").innerHTML = text;
+					//document.write(NewArray[count] + "<p>")
+				}	
+				if (time%5 == 0){
+					count =count+1;
+				}
+				
+			}			
+		}
+		
+  		//設定座標值 起始座標+速度
+  		x+=xSpeed;
+  		y+=ySpeed;
+ 		img.style.top=y+"px";
+ 		img.style.left=x+"px";
+ 		//延遲呼叫函式floatimg()，每個500毫秒呼叫一次
+		time++;		
+ 		setTimeout("floatimg()",500);
+		}
+ 		floatimg();	
+		
+		function ChangeBackground(option){		
+			
+			//var randomBgIndex = Math.round( Math.random() * 6 );				
+			var randomBgIndex = parseInt(Math.random()*(bodyBgs.length-1));
+			var currentImage=bodyBgs[randomBgIndex];
+			//document.body.backgroundImage = currentImage;
+			//使用切換背景
+			//document.getElementById("Map").style.backgroundImage = "url(" + currentImage + ");
+			document.body.style.backgroundImage = "url(" + currentImage + ")";	
+						 
+			
+			//document.body.style.background('<style>body{background:url(' + bodyBgs[randomBgIndex] + ') ;width:1005px;height:585px;no-repeat" 0}');
+			//<div style="background:url('images/FF8_background.jpg');width:1005px;height:585px;no-repeat">			
+			//alert("already  !!");
+			
+			//使用選擇背景
+			//document.getElementById("Map").style.backgroundImage = "url("+option.options[option.selectedIndex].value+")"; 
+			
+		}
+		
+	</script>
+	</head>
+	
+</html>

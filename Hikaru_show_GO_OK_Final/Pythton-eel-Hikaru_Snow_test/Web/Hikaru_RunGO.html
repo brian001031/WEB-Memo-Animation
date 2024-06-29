@@ -1,0 +1,827 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>	
+		<title>*棋靈王GO-神之降臨*</title>		  
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<meta name="author" content="" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />		
+		<link rel="stylesheet" type="text/css" href="" />	
+				
+		<style type="text/css">
+		   *{
+				margin: 0;
+				padding: 0;
+			} 
+					
+			html, body {
+				<!-- background: hsla(10,75%,5%,1);-->				
+				background-position:center center;
+				background-repeat:no-repeat;
+				background-color:#000000;
+				margin: 30px auto;
+				border: 1px solid #CCC;
+				position: relative;
+				overflow-y:scroll;
+			}
+			
+			a.preview,a.preview:hover{
+				text-decoration:none;
+			}
+			
+			a.preview img{
+				margin:20px 10px;
+			}
+			
+			#snowBox{
+			  position:relative;
+			  width:100%;
+			  height:100%;
+			  margin: 0 auto;
+			  overflow:hidden;}				
+			.snowFlake{position:absolute;}
+						
+			.col{
+				font-size:20px;
+				color:#FFFF00;
+			}							
+			.maple { position: absolute; top: 0; color:#ff0000;}
+														
+			.dot1{
+				position:absolute;
+				left:1200px;
+				top:130px;	
+				width:200px;
+				height:150px;
+				background:blue-ish;
+				border-radius:56%;
+				display:block;
+				border:3px solid Green;
+				-webkit-animation-iteration-count:infinite;
+				-webkit-animation-timing-function:linear;
+				-webkit-animation-name:orbit;
+				-webkit-animation-duration:10s;
+			}
+			.dot2{
+				position:absolute;
+				left:1050px;
+				top:550px;	
+				width:100px;
+				height:150px;
+				background:blue;
+				border-radius:75%;
+				display:block;
+				border:3px solid white;				
+			}
+			.dot3{
+				position:absolute;
+				left:1350px;
+				top:650px;	
+				width:130px;
+				height:140px;
+				background:Green;
+				border-radius:100%;
+				display:block;				
+			}
+			.dot4{
+				position:absolute;
+				left:1120px;
+				top:800px;	
+				width:130px;
+				height:120px;
+				background:Red;
+				border-radius:80%;
+				display:block;				
+			}		
+			.dot5{
+				position:absolute;
+				left:1250px;
+				top:380px;	
+				width:100px;
+				height:100px;
+				background:Red;
+				border-radius:30%;
+				display:block;				
+			}					
+			.dot6{
+				position:absolute;
+				left:1475px;
+				top:780px;	
+				width:90px;
+				height:175px;
+				background:Red;
+				border-radius:5%;
+				display:round;				
+			}
+								
+			#play {
+			  position: absolute;
+			  left:1405px;
+			  top:1105px;
+			}			
+			.setNine{			
+				width:120px; 
+				color:#FFFFFF;			
+				font-size:20px;							
+				background:	#24367D;				
+				left:1200px;
+				top:200px;
+				border: 3px solid orange ;
+			}			
+			.Sun{				
+				-webkit-animation-iteration-count:infinite;
+				-webkit-animation-timing-function:linear;
+				-webkit-animation-name:orbit;
+				-webkit-animation-duration:5s;				
+			}
+			
+			@-webkit-keyframes orbit { 
+				from { -webkit-transform:rotate(0deg) } 
+				to { -webkit-transform:rotate(360deg) } 					
+			}	
+			
+			.control{			
+				position: absolute;			
+				left:1050px;
+				top:980px;	
+				border: 7px solid orange ;
+			}
+			
+			#Hikaru{		
+				width: 150px;
+				height: 150px;
+				border-radius: 75%;				
+				position: absolute;	
+				background-image:url("images/001.jpg");
+			}	
+			
+			#akira{	
+				width: 140px;
+				height: 155px;						
+				position: absolute;	
+				background:Green;
+				border-radius:87%;				
+				background-image:url("images/002.jpg");
+			}			
+			
+			#Komei{	
+				width: 107px;
+				height: 145px;						
+				position: absolute;													
+				border-radius:30%;				
+				background-image:url("images/003.jpg");
+			}
+			
+			#Kazuya{	
+				width: 110px;
+				height: 115px;						
+				position: absolute;									
+				border-radius:27%; 			
+				background-image:url("images/004.jpg");
+			}
+			
+			#Isumi{					 				
+				position:absolute;
+				width:100px;
+				height:165px;				
+				border-radius:3%;				
+				background-image:url("images/005.jpg");
+			}			
+
+			.button{
+				position: absolute;			
+				left:1250px;
+				top:980px;
+			}
+			
+			.buttonPause{
+				position: absolute;			
+				left:1300px;
+				top:1080px;
+				width: 50px;
+				height: 30px;				
+			    margin-left: 10px; 
+			}
+			
+			.button input{								
+				width: 60px;
+				height: 30px;
+				line-height: 30px;
+				border: none ;
+				border-radius: 90px;
+				background: #f00;
+				margin-right: 10px;
+				text-align: center;
+				color: #FFFFFF;
+				font-weight: 700px;
+				cursor: pointer;				
+			}
+			
+			.pic{
+				width:500px; 
+				height:350px;
+				overflow:hidden;
+			}
+			
+			.pic img{
+				transform:scale(1,1);
+				transition: all 1s ease-out;
+			}
+			
+			.pic img:hover{
+				transform:scale(1.2,2.1);
+			}
+						 
+			#tooltip{
+				position:absolute;
+				border:1px solid #eeeeee;
+				background:#eeeeee;
+				padding:1px 1px 1px 1px;
+				display:none;
+			}
+			
+		</style>
+		
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>		
+		<script type="text/javascript" src="snowstorm.js"></script>			
+		<script type="text/javascript" src="js/bigImgShow.js"></script>					
+		<script src="http://www.blog-switch.com/widgets/55/1111624916.js" type="text/javascript" charset="UTF-8"></script>				
+	</head>		
+		
+	<body style="background:#000000;font:100 1.75em helvetica neue, helvetica,arial,verdana,sans-serif;color:#fff">		
+		<main>
+			<div class="col" >
+                <h2 class="content__title">ヒカルの碁GO!</h2>				 
+            </div>	
+			
+			<!--
+			<div style="background:url('images/slide_1.jpg'); width:1005px;height:705px;no-repeat">			
+				
+				
+			</div>	
+			-->
+			<div id="my_div" class="class1" ></div>
+			<div class="maple" ></div>
+			<div style="width: 160px; text-align: center; margin: 0 auto; font-size: 10px;"><a href="http://www.blog-switch.com/widget/55" target="_blank">ブログ・スイッチ</a></div> 
+		<!--	<span onmouseover = "stoptupian(this)"; onmouseout="dongqilai(this)"; id="img1";>圖片切換</span><p> -->
+			
+        </main>			
+					
+		<img src="images/t1.jpg" onmouseover="stoptupian()" onmouseout="dongqilai()" id="img1">
+		<img src="images/sai_cute.jpg" id="imgR1" class="dot1">
+		<div id="Hikaru" style="left: 1023px; top: 450px;" class="pic"><img src="images/001.jpg"/></div>
+		<div id="akira" style="left: 1350px; top: 550px;" class="pic"><img src="images/002.jpg"/></div>
+		<a href="images/ss3.jpg" class="tooltip" target="_blank"> <div id="Komei" style="left: 1120px; top: 800px;"> </div></a>
+		<a href="images/s4.jpg" class="tooltip" target="_blank"><div id="Kazuya" style="left: 1250px; top: 380px;" ></div></a>
+		<a href="images/s5.jpg" class="tooltip" target="_blank"><div id="Isumi" style="left: 1470px; top: 750px;"></div></a>
+		<!--
+		<a href="images/ss3.jpg" class="tooltip" target="_blank"><img src="images/003.jpg" style="max-width:37px; max-height:33px;"/></a>
+		<a href="images/ss3.jpg" target="_blank"></a> -->
+		
+		<!--
+		<img src="images/002.jpg" id="imgT2" class="dot3">  
+		<img src="images/003.jpg" id="imgT3" class="dot4">
+		<img src="images/004.jpg" id="imgT4" class="dot5">
+		<img src="images/005.jpg" id="imgT5" class="dot6">-->			
+		</br>
+		
+		<select name="select" class="control" id="personlist" > 
+			  <option value="1">光</option> 
+			  <option value="2">亮</option> 
+			  <option value="3">明</option>
+			  <option value="4">谷</option>
+			  <option value="5">伊</option>			  	
+		</select> 
+							
+		<div class="button">
+			<input type="button" value="上" >
+			<input type="button" value="下" >
+			<input type="button" value="左" >
+			<input type="button" value="右" >
+			<input type="button" value="停止動" onclick="Pause_Ack()">	
+		</div>			
+				
+		<select ng-model="selectItem" style="left: 1050px; top: 1050px;" id="ACKMode">
+				<option value="m1" select="select">手動</option> 
+				<option value="a1" >自動</option> 
+		</select>
+					
+		<input id="play" type="button" value="↑讀位置" onclick="Position_Change('play');" class="setNine"/>
+		<input id="pause" style="display:none;" type="button" value="*復歸*" onclick="Position_Change('pause');" class="setNine"/>				
+		<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;"><div id="innerdiv" style="position:absolute;"><img id="bigimg" style="border:5px solid #fff;" src="" /></div></div>
+	</body>	
+	
+	<audio id="bgMusic">
+				<source = src="MoonLight.mp3" type="audio/mp3">
+				<source = src="hangge.ogg" type="audio/ogg">
+	</audio>
+	
+	<!-- <embed id="Music1" autostart="true" loop="true" volume="95" src="audio/GetOver.mp3" /> -->
+	 <embed id="Music1" autostart="true" loop="true" volume="75" src="audio/HikarunoGo_OST 7Michi.mp3" />
+	<!--
+	<a href="javascript:document.midi.play()" target=_self>撥放音樂</a> 
+	<a href="javascript:document.midi.stop()" target=_self>停止音樂</a> -->	
+	
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>		
+	<script language="JavaScript" type="text/javascript" >
+ 		//window.onload = init;	
+		var bool = false;
+		var allX,allY,currentY;			
+		var T1,T2,T3,T4,T5;
+		var step = 1;		
+		var ack = 1;
+		var tmp_switch = 0,Value1_TOP =0 ,Value1_Left = 0;
+		//獲取圖片所在的div物件
+ 		var img=document.getElementById("moon");
+ 		//設定div起始座標
+ 		var x=850,y=585;
+ 		//設定圖片的行進速度
+ 		var xSpeed=0,ySpeed=-1;
+ 		//設定圖片的最大浮動的高度
+ 		var h=100;
+		var H=0;
+		var torlence = y - h;
+		var str1 = torlence / 3;
+		var str2 = torlence / 5;
+		var str3 = torlence / 7;
+		
+		var count = 0 , time = 0;
+		
+		var jsImg = new Array("images/slide_1.jpg","images/t1.jpg","images/t2.jpg");
+		
+		var n=1; //圖片標記數
+		var dingshi; //讓圖片動的定時器
+        var jsImg_len = jsImg.length;  // 圖檔數量
+        // 要用另一個變數存，是不想在 function 中每次都要算陣列的大小
+        var pitch=0;    
+
+		//begin seting，change declare global var，2019.07.14 
+		//var box=document.querySelector('#Hikaru');
+		var box;
+		
+		
+		var inputs= document.querySelectorAll('input'); 
+		var sel_s = document.getElementById("personlist");	
+
+		var AckMode=document.getElementById('ACKMode'); 
+		
+		
+		var xSpeed=2; //x轴的速度
+		var ySpeed=2; //y轴的速度
+		var timer;
+
+		var boxname= ["Hikaru", "akira", "Komei","Kazuya","Isumi"];
+		var selname= ["光", "亮", "明","谷","伊"];
+										
+		//新增音樂mp3 播放
+		/*
+		if (audio.canPlayType("audio/mp3")) {
+			audio.src = "MoonLight.mp3";
+		}else if(audio.canPlayType("audio/ogg")) {
+			audio.src = "hangge.ogg";
+		}*/
+		
+		mp3 = new Array(1);
+		mp3[0] = "audio/MoonLight.mp3";
+		 									
+		//新增顯示字串
+		midi = new Array(3);
+		midi[0] = "@張無忌-您好 有空 可以 一起 研究 歡迎 來到心靈 小語面板 金庸-曾把-所創作-的小說名稱的首字聯成一副對聯：飛雪連天射白鹿，笑書神俠倚碧鴛。";							
+		midi[1] = "歡迎來到心靈小語面板";
+		midi[2] = "有空可以一起研究喔";
+
+		var lenmid1_0= midi[0].length;
+		var text = "";
+		var Test_img;
+		
+		var bodyBgs = [];
+			bodyBgs[0] = "images/2779-02.jpg";
+			bodyBgs[1] = "images/2779-04.jpg";
+			bodyBgs[2] = "images/perfectwith.jpg";
+			bodyBgs[3] = "images/2779-06.jpg";
+			bodyBgs[4] = "images/all.jpg";
+			bodyBgs[5] = "images/123.jpg";
+			bodyBgs[6] = "images/main.jpg";
+		
+		//var audio = document.getElementById("bgMusic");
+		//var audio = document.createElement("audio");
+		//audio.src = "MoonLight.mp3";
+		//audio.play();
+		 
+		//重新播放
+		//audio.currentTime = 0;
+		//audio.play();
+		
+		/*
+		function rand(q){
+			return Math.floor(Math.random()*(q+1));
+		}
+		*/
+				 		 				
+		function init(){
+			dingshi=window.setInterval("tupian()",3000);
+			//alert("Init Begin  !!");			
+			//allX = document.body.clientWidth;
+			//allY = document.body.clientHeight;
+			//allX = document.body.clientWidth;
+			//allY = document.body.clientHeight;
+								
+			//allX = document.style.dot4.left;
+			//allY = document.style.dot4.top;
+			
+			//T1 = document.getElementById('imgT1');
+			//Value1_TOP = T1.dot2.top;
+			//Value1_Left = T1.offsetLeft; 
+			//Value1_TOP = T1.offsetTop;
+
+			//picture = document.getElementById("pic1");
+            //window.onmousemove = onMove;	
+
+			//CheckSelectName();													
+		}
+		
+		/*
+		function CheckSelectName(){			
+			//$('#selectList :selected').text();
+			//var index = obj.selectedIndex; 			
+			var obj=document.getElementByIdx_x("personlist"); 
+			var index=obj.selectedIndex; //序號，取當前選中選項的序號 
+			var val = obj.options[index].text;
+			alert("選擇的是->" +val+ " 序號為 " + index);
+		}
+		*/
+		
+		//更換圖片
+		function tupian(){
+			
+			var obj=document.getElementById("img1");			
+			n++;
+			if(n>7){
+				n=1;
+			}							
+			obj.src="images/t"+n+".jpg";	
+						
+		}
+		
+		//滑鼠放上圖片停止
+		function stoptupian(){			
+			window.clearInterval(dingshi);
+			//alert("Stop  !!");
+		}
+		//滑鼠離開圖片動起來
+		function dongqilai(){
+			dingshi=window.setInterval("tupian()",5000);			
+			//alert("already  !!");
+		}
+		
+		function Position_Change(button_id){
+		//	var label = document.getElementById("RunMove");
+			ack++;
+			console.log(button_id);
+														
+           																		
+			if(button_id == 'play')
+			{
+				document.getElementById('play').style.display = "none";								
+				document.getElementById('pause').style.display = "block";
+				//document.getElementById("pause").style.left = "1400px";
+				//document.getElementById("pause").style.top = "905px";	
+
+				Get_Img_Position();
+			}
+			if(button_id == 'pause')
+			{
+				document.getElementById('play').style.display = "block";
+				
+				document.getElementById('pause').style.display = "none";
+				//document.getElementById("play").style.left = "1400px";
+				//document.getElementById("play").style.top = "905px";					
+			}			
+			 
+				
+			//var text = document.getElementById(button_id).innerText ;
+			//text.data = text.data == "切換" ? "暫停" : "切換";
+			
+			//alert("Try Test ！！！");
+			//Move_Picture();
+			
+			
+			/*
+			if(ack%2 ==0 ){				 
+				//Move_Picture();
+				//label.innerHTML ="暫停";
+				//label.setAttribute('style', 'value=暫停');
+				//document.getElementById("pause").style.visibility = "hidden";	
+				Move_Picture();				
+			}else{				
+				//label.innerHTML ="移動繼續";
+				//label.setAttribute('style', 'value=移動繼續');				
+			}
+					
+			*/
+			//document.getElementById(button_id).innerText = text.data ;			
+		}
+		
+		function Get_Img_Position()
+		{
+			/*
+			var i = 0;
+			var total_info = new Array();
+			$.each( row, function( key, value ) {
+				total_info[i] = new Array();
+				total_info[i]['key']=key;
+				total_info[i]['value']=value;
+				i++;
+			});
+			*/
+			
+			//var total_info = new array[5];
+			var name,attr,data_x,data_y,info="";
+			for ( var i = 0, len = boxname.length; i < len; i++ ){
+				  name = "#"+boxname[i];
+				  attr = document.querySelector(name);;
+				  data_x = attr.style.left+'px';
+				  data_y = attr.style.top+'px';				  
+				  info += name+"-position ->"+data_x+" "+data_y+"\r";	
+				 // total_info[i] = info;
+				  if(i === boxname.length-1){
+					alert(info);
+				  }				 
+			}					
+		}
+		
+		
+		
+									
+		function dianwo() {
+            var obj = document.getElementById('mydiv');
+            var x = obj.offsetLeft
+            var y = obj.offsetTop;
+            x += 10;
+            y += 10;
+            obj.style.left = x;
+            obj.style.top = y;            
+        }
+
+		function show()
+		{
+			setInterval('dianwo()',1500);
+		}
+
+		
+		function Move_Picture(){				
+			T1 = document.getElementById('imgT1');
+			currentY = parseInt(T1.dot2,top);
+			
+			//allX = document.style.dot4.left;
+			//allY = document.style.dot4.top;
+										
+			if( /*currentY >= allY && */ tmp_switch==1)
+			{
+				//step=-1;
+				if(currentY <= Value1_TOP)
+				{
+				  tmp_switch =0;
+				  step-=1;				  
+				}
+				else				
+					step-=3; //every 3 Step offset
+					
+				//	alert("allX = " +allX+ " allY = "+allY+"-> step-= Status  !!" + "currentY -> " + currentY + "---" + "Value1_TOP -> "+Value1_TOP + "Value1_Left ->"+ Value1_Left);
+			}
+			else{                
+				if(currentY >= allY)
+				{
+					tmp_switch = 1;
+					step+=1; 
+				}					
+				else{
+					step+=2; //every 2 Step offset
+				}				
+								
+				//alert("allX = " +allX+ " allY = "+allY+"step+= Status  !!" + "currentY -> " + currentY + "---" + "Value1_TOP -> "+Value1_TOP );
+				//alert("allX = " +allX+ " allY = "+allY+"-> step+= Status  !!" + "currentY -> " + currentY + "---" + "Value1_TOP -> "+Value1_TOP + "Value1_Left ->"+ Value1_Left);
+			}
+						
+			/*
+			if(currentY == 0){
+				//step=1;
+			}*/
+			
+			T1.dot2.top = parseInt(T1.dot2.top)+step+'px';
+			
+			//alert("img1 top = "+T1.dot2.top);
+			//setTimeout('Move_Picture()',3000);
+			//setInterval('dianwo()',1500);
+		}
+		
+		function getSelectedOption(sel) {
+			var opt;
+			for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+				opt = sel.options[i];
+				if ( opt.selected === true ) {
+					break;
+				}
+			}
+			return opt;
+		}
+		
+		
+		function RunPeople_ack(opt,y_speed,x_speed,index){			
+			var toack;
+			var ma = AckMode.options[AckMode.selectedIndex].text;
+			for ( var k = 0, len = selname.length; k < len; k++ ) {
+				//opt = sel.options[i];
+				if ( opt.text === selname[k]) {									
+					toack = "#"+boxname[k];
+					break;
+				}
+			}	
+			box = document.querySelector(toack);
+
+			// top,bottom
+			if(index ===0 || index===1)
+			{
+				//Mannul
+				if(ma==="手動"){				
+					var y=parseInt(box.style.top)+(y_speed*1.5);
+					box.style.top=y+'px';				
+				}
+				else{ //Auto
+						
+				 timer=setInterval(function(){					
+					//y_speed =y_speed/2;				 				
+					var y=parseInt(box.style.top)+y_speed;
+					box.style.top=y+'px';										
+					if(y<=0 || y>=1000) clearInterval(timer);				
+					},1000/60)  				
+				}		
+			}
+			else // left,right
+			{				
+				//Mannul
+				if(ma==="手動"){
+					var x=parseInt(box.style.left)+(x_speed*1.5);
+					box.style.left=x+'px';						 		
+				}else{ //Auto
+					timer=setInterval(function(){
+					//x_speed =x_speed/2;
+					var x=parseInt(box.style.left)+x_speed;
+					box.style.left=x+'px';
+					if(x>=1310 || x<=0) clearInterval(timer);
+					},1000/60)  							
+				}							
+			}												
+		}
+		
+		function Move_Track_Run(y_p,x_p,num){		
+			var opt= getSelectedOption(sel_s);			
+			RunPeople_ack(opt,y_p,x_p,num);					
+		}
+											
+ 		function floatimg(){
+  		//比較圖片是否到達指定高度 
+  		if(y<h||y<0){ 
+			ySpeed= 0;H=1; 
+		}
+		
+  		if(H==1){
+            //獲取文字框所在的div物件
+			var tt = document.getElementById("poem");
+                        //改變文字框中內容
+			tt.innerHTML="~TKS FOR YOUR REVIEW,See You~.";
+		}
+		else{		
+			if(y == h+str1){
+				
+			}
+			else if (y >= h+str2&&  y< h+str1){
+						
+			}
+			else{					
+				var NewArray = midi[0].split("");			
+				if(count >= lenmid1_0){	
+					text="";
+					for (i = 0; i < count ; i++) {
+					// text += NewArray[i]+ "<br>";					
+						if( i%10 >=1 && i%10 <=9){
+							text += NewArray[i]/*+"-"*/;
+						}
+						else{
+							//text += NewArray[i]+"-";
+							text += NewArray[i]+ "<br>";
+						}					 					 		
+					}
+					document.getElementById("DIV_TEXT").innerHTML = text;
+					//document.write(NewArray[count] + "<p>")
+				}	
+				if (time%5 == 0){
+					count =count+1;
+				}				
+			}			
+		}
+		
+  		//設定座標值 起始座標+速度
+  		x+=xSpeed;
+  		y+=ySpeed;
+ 		img.style.top=y+"px";
+ 		img.style.left=x+"px";
+ 		//延遲呼叫函式floatimg()，每個500毫秒呼叫一次
+		time++;		
+ 		//setTimeout("floatimg()",500);
+		}
+ 		//floatimg();	
+		//window.onload=init;
+		//snowStorm.snowColor = '#99ccff';   // blue-ish snow!?
+		//snowStorm.flakesMaxActive = 96;    // show more snow on screen at once
+		//snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
+		
+		window.onload=init();				
+
+		// top
+		inputs[0].onclick=function(){		   
+			clearInterval(timer); //先清除持續時間作動事件
+			ySpeed=-7;
+			xSpeed=0;	
+
+			/*create select ack function below*/
+			Move_Track_Run(ySpeed,xSpeed,0);
+			/*end*/
+					
+			/*
+			timer=setInterval(function(){
+			ySpeed=-2;
+			xSpeed=0;
+			var y=parseInt(box.style.top)+ySpeed;
+			box.style.top=y+'px';
+			if(y<=0) clearInterval(timer);				
+			},1000/60)  
+			*/
+		};
+
+		// bottom
+		inputs[1].onclick=function(){
+			clearInterval(timer);
+			ySpeed=7;
+			xSpeed=0;
+			
+			/*create select ack function below*/
+			Move_Track_Run(ySpeed,xSpeed,1);
+			/*end*/
+			
+			/*
+			timer=setInterval(function(){
+			ySpeed=15;
+			xSpeed=0;
+			var y=parseInt(box.style.top)+ySpeed;
+			box.style.top=y+'px';
+			if(y>=790) clearInterval(timer);
+			},1000/60) 
+			*/			
+		};
+
+		// left
+		inputs[2].onclick=function(){
+			clearInterval(timer);
+			xSpeed=-5;
+			ySpeed=0;
+			
+			Move_Track_Run(ySpeed,xSpeed,2);
+			
+			/*
+			timer=setInterval(function(){
+			
+			var x=parseInt(box.style.left)+xSpeed;
+			box.style.left=x+'px';
+			if(x<=0) clearInterval(timer);
+			},1000/60)*/
+		};
+
+		//right
+		inputs[3].onclick=function(){
+			clearInterval(timer);
+			xSpeed=5;
+			ySpeed=0;
+			
+			Move_Track_Run(ySpeed,xSpeed,3);
+			
+			/*
+			timer=setInterval(function(){
+			
+			var x=parseInt(box.style.left)+xSpeed;
+			box.style.left=x+'px';
+			if(x>=1280) clearInterval(timer);
+			},1000/60)  
+			*/
+		}; 
+		
+		//pause
+		function Pause_Ack(){
+			//alert("13249877");
+			clearInterval(timer)
+		}
+					
+	</script>
+</html>
